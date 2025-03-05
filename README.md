@@ -47,10 +47,29 @@ respective `Dockerfile` and `docker-compose.yaml` files.
 
 Docker environments can be changed in `docker.env` file.
 
+## Database Seeding
+
+There seed file is in `scripts/01_create_shopping_list_items_table.sql`. Delete all tables in the database first and
+then paste the SQL into phpMyAdmin.
+
+Then go to the link `http://172.105.135.111:7380/db/seed` to load data.
+
 ## Security
 
 Only the HTTP ports `7380` and `7380` are accessible via firewall configuration rules. This locks the application down
 and more secure.
+
+## Updating the application
+
+SSH into the application and enter the following commands:
+
+```shell
+cd /home/wwwadmin/Raccoon-Shopper/
+git pull
+./dkconnect.sh
+composer update
+composer dump-autoload --optimize
+```
 
 ## Takeaways and future improvements
 
