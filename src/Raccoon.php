@@ -10,6 +10,5 @@ final class Raccoon
 
     public function boot(): void
     {
-
     }
 }

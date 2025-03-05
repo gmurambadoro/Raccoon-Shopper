@@ -6,22 +6,20 @@ final readonly class Authentication
 {
     private const string SESSION_COOKIE_NAME = '__SIDmsFyt6gRAkLq';
 
-    public function isSessionValid(): bool
+    public function hasSession(): bool
     {
         return !empty($_SESSION[self::SESSION_COOKIE_NAME] ?? '');
     }
 
-    public function login(string $email): bool
+    public function getSession(): string
     {
-        $this->logout();
-
-        // todo: store the email against the session id
-
-        $_SESSION[self::SESSION_COOKIE_NAME] = $email;
+        return $_SESSION[self::SESSION_COOKIE_NAME] ?? $this->generateSession();
     }
 
-    public function logout(): void
+    private function generateSession(): string
     {
-        $_SESSION[self::SESSION_COOKIE_NAME] = null;
+        $_SESSION[self::SESSION_COOKIE_NAME] = uniqid();
+
+        return $_SESSION[self::SESSION_COOKIE_NAME];
     }
 }
