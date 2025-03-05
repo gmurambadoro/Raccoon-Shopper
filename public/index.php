@@ -1,8 +1,9 @@
 <?php
 
-use App\Model\Product;
-use App\Raccoon;
+use App\RaccoonRouter;
 use Illuminate\Database\Capsule\Manager as Capsule;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 require_once __DIR__ . '/../autoload.php';
 
@@ -21,11 +22,20 @@ $capsule->addConnection([
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-$raccoon = new Raccoon();
-$raccoon->boot();
+$loader = new FilesystemLoader(paths: __DIR__ . '/../templates');
+$twig = new Environment(
+    loader: $loader,
+    options: [
+        'cache' => __DIR__ . '/../var/cache',
+    ],
+);
 
-echo "<pre>";
-print_r(Product::all()->map(fn(Product $p) => $p->getAttributes()));
-echo "</pre>";
+try {
+    $raccoon = new RaccoonRouter();
 
-echo "Hello, world!";
+    // todo: Add routes
+
+    $raccoon->matchRoute();
+} catch (Throwable $exception) {
+    echo $exception->getMessage() . '<br />';
+}

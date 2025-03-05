@@ -15,6 +15,7 @@
   ],
   "require": {
     "symfony/http-foundation": "^7.2",
-    "illuminate/database": "^12.1"
+    "illuminate/database": "^12.1",
+    "twig/twig": "^3.0"
   }
 }
