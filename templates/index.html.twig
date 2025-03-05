@@ -1,5 +1,16 @@
 {% extends "layout/base.html.twig" %}
 
 {% block body %}
-    <p>Hello Raccoon!</p>
+    <h3>Shopping List Items</h3>
+
+    {% for item in items %}
+        <p>
+            <span>{{ item.name }} - Qty {{ item.quantity|number_format(2) }}</span>
+
+            <span>
+                <a href="/items/{{ item.id }}/edit" class="btn">Edit</a>
+                <a href="/items/{{ item.id }}/delete" class="danger">Delete</a>
+            </span>
+        </p>
+    {% endfor %}
 {% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout/base.html.twig" %}
+
+{% block body %}
+    <form method="POST" action="{{ item.id ? ("/items/" ~ item.id ~ "/edit") : "/items/new" }}">
+        <fieldset>
+            <label>Item Name <input name="name" value="{{ item.name }}" required></label>
+        </fieldset>
+
+        <fieldset>
+            <label>Quantity <input type="number" name="quantity" value="{{ item.quantity }}" required min="0"></label>
+        </fieldset>
+
+        <button type="submit">Create</button>
+    </form>
+{% endblock %}
