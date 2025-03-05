@@ -5,7 +5,13 @@
 
     {% for item in items %}
         <p>
-            <span>{{ item.name }} - Qty {{ item.quantity|number_format(2) }}</span>
+            {% if item.checked %}
+                <strike>
+                    <span>{{ item.name }} - Qty {{ item.quantity|number_format(2) }}</span>
+                </strike>
+            {% else %}
+                <span>{{ item.name }} - Qty {{ item.quantity|number_format(2) }}</span>
+            {% endif %}
 
             <span>
                 <a href="/items/{{ item.id }}/edit" class="btn">Edit</a>

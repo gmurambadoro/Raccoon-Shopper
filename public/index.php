@@ -38,7 +38,7 @@ try {
 
     $raccoon->addRoute('GET', '/', target: function () use ($twig) {
         echo $twig->render('index.html.twig', [
-            'items' => ShoppingListItem::all(['id', 'name', 'quantity']),
+            'items' => ShoppingListItem::all(['id', 'name', 'quantity', 'checked']),
         ]);
         exit;
     });
@@ -62,12 +62,14 @@ try {
 
         $name = $request->request->get('name');
         $quantity = $request->request->getInt('quantity');
+        $checked = $request->request->getBoolean('checked');
 
         // todo: validate
 
         ShoppingListItem::create([
             'name' => $name,
             'quantity' => $quantity,
+            'checked' => $checked,
         ]);
 
         header('Location: /');
@@ -86,11 +88,13 @@ try {
 
         $name = $request->request->get('name');
         $quantity = $request->request->getInt('quantity');
+        $checked = $request->request->getBoolean('checked');
 
         $item = ShoppingListItem::findOrFail($itemId);
 
         $item->name = $name;
         $item->quantity = $quantity;
+        $item->checked = $checked;
         $item->save();
 
         header('Location: /');

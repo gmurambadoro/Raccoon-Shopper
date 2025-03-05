@@ -10,6 +10,10 @@
             <label>Quantity <input type="number" name="quantity" value="{{ item.quantity }}" required min="0"></label>
         </fieldset>
 
+        <label>
+            Checked <input type="checkbox" name="checked" {% if item.checked %} checked {% endif %}>
+        </label>
+
         <button type="submit">Create</button>
     </form>
 {% endblock %}
