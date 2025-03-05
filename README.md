@@ -11,3 +11,10 @@
 
 ## Getting Started
 
+## References
+
+- [The HttpFoundation Component](https://symfony.com/doc/current/components/http_foundation.html) - The HttpFoundation
+  component defines an object-oriented layer for the HTTP specification.
+
+
+

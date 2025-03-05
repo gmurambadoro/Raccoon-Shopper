@@ -1,0 +1,19 @@
+{
+  "name": "gmurambadoro/raccoon-shopper",
+  "description": "Simple shopping list tool, without the frameworks",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Gavin Murambadoro"
+    }
+  ],
+  "require": {
+    "symfony/http-foundation": "^7.2"
+  }
+}
