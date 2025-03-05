@@ -19,9 +19,7 @@ class ShoppingListItem extends Model
                 $item->quantity = 1;
                 $item->checked = false;
                 $item->save();
-            } catch (\Throwable $exception) {
-                var_dump($exception->getMessage());
-                exit;
+            } catch (\Throwable) {
             }
         }
     }

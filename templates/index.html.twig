@@ -14,9 +14,21 @@
             {% endif %}
 
             <span>
-                <a href="/items/{{ item.id }}/edit" class="btn">Edit</a>
-                <a href="/items/{{ item.id }}/delete" class="danger">Delete</a>
+                <a href="/items/{{ item.id }}/edit" role="button">Edit</a>
+                <a href="/items/{{ item.id }}/delete" role="button" class="contrast">Delete</a>
             </span>
         </p>
+
+        <hr/>
     {% endfor %}
+
+    <p>
+        <a role="button" href="/items/new" class="primary">
+            + New Item
+        </a>
+
+        <a role="button" href="/db/seed" class="secondary">
+            Seed the database
+        </a>
+    </p>
 {% endblock %}

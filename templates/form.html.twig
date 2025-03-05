@@ -1,6 +1,8 @@
 {% extends "layout/base.html.twig" %}
 
 {% block body %}
+    <h3>{{ item.id ? 'Edit Item' : 'New Item' }}</h3>
+
     <form method="POST" action="{{ item.id ? ("/items/" ~ item.id ~ "/edit") : "/items/new" }}">
         <fieldset>
             <label>Item Name <input name="name" value="{{ item.name }}" required></label>
@@ -14,6 +16,10 @@
             Checked <input type="checkbox" name="checked" {% if item.checked %} checked {% endif %}>
         </label>
 
-        <button type="submit">Create</button>
+        <div>
+            <button type="submit">Create</button>
+        </div>
+
+        <p><a href="/">&laquo; Back</a></p>
     </form>
 {% endblock %}
