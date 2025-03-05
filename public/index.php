@@ -26,14 +26,22 @@ $loader = new FilesystemLoader(paths: __DIR__ . '/../templates');
 $twig = new Environment(
     loader: $loader,
     options: [
-        'cache' => __DIR__ . '/../var/cache',
+//        'cache' => __DIR__ . '/../var/cache',
+        'debug' => true,
+        'cache' => false, // todo: Add caching in production
     ],
 );
 
 try {
     $raccoon = new RaccoonRouter();
 
-    // todo: Add routes
+    $raccoon->addRoute('GET', '/', target: function () use ($twig) {
+        echo $twig->render('index.html.twig', []);
+        exit;
+    });
+
+    $raccoon->addRoute('GET', '/db/init', target: function () {
+    });
 
     $raccoon->matchRoute();
 } catch (Throwable $exception) {
