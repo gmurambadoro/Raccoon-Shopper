@@ -9,6 +9,12 @@
 - Pre-defined scripts for building and connecting to your Docker containers.
 - Seamless integration with [phpMyAdmin](https://www.phpmyadmin.net/) for database management.
 
+## Screenshots
+
+![1](screenshots/1.png)
+
+![2](screenshots/2.png)
+
 ## Architecture
 
 This is a simple MVC application made up of the following:
